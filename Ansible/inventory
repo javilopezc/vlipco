@@ -1,0 +1,2 @@
+[webserver]
+ec2-3-129-72-250.us-east-2.compute.amazonaws.com ansible_ssh_private_key_file=./vlipco-ssh-key.pem ansible_user=ec2-user
