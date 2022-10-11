@@ -47,7 +47,7 @@ jobs:
           echo "event_name"
           echo '${{ github.event_name }}'
           echo "pull request key"
-          echo '${{ github.pull_request }}'
+          echo '${{ toJSON(github.pull_request) }}'
           
 
 
