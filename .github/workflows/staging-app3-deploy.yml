@@ -1,5 +1,5 @@
 
-name: Staging APP1 Deploy
+name: Staging APP3 Deploy
 on:
   pull_request_review:
     branches:
@@ -28,7 +28,7 @@ jobs:
     steps:
       - name: ECHO
         run: |
-          echo "Staging APP1 Deploy"
+          echo "Staging APP3 Deploy"
           echo "Branch_ref name is $BRANCH"
           echo "head_ref"
           echo '${{ github.event.pull_request.head.ref }}'
