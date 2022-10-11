@@ -48,6 +48,6 @@ jobs:
           echo '${{ github.event_name }}'
           echo "github.event.pull_request.head object"
           echo '${{ toJSON(github.event.pull_request.head) }}'
-          
-
+          echo "head ref"
+          echo '${{ github.event.pull_request.head.ref }}'
 
