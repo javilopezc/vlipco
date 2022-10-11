@@ -24,7 +24,7 @@ jobs:
     steps:
       - name: ECHO
         run: |
-          echo "$BRANCH"
+          echo "Branch name is $BRANCH"
 
 
 
