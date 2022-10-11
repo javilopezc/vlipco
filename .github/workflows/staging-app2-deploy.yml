@@ -42,5 +42,12 @@ jobs:
       - name: Dump GitHub Context
         id: github_context_step
         run: echo '${{ toJSON(github) }}'
+      - name: Obtain context values
+        run: |
+          echo "event_name"
+          echo '${{ github.event_name }}'
+          echo "pull request key"
+          echo '${{ github.pull_request }}'
+          
 
 
