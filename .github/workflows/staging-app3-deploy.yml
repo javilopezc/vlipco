@@ -12,12 +12,16 @@ jobs:
     name: set-parameters
     runs-on: ubuntu-latest
     outputs: 
-      branch: ${{ steps.app_params.outputs.branch }}
+      branch_ref: ${{ steps.app_params.outputs.branch }}
+      branch_base_ref: ${{ steps.app_params.outputs.branch_base_ref }}
+      branch_head_ref: ${{ steps.app_params.outputs.branch_head_ref }}
     steps:
       - name: Set App Parameters
         id: app_params
         run: |
-          echo "::set-output name=branch::${GITHUB_REF#refs/heads/}"
+          echo "::set-output name=branch::${GITHUB_REF}"
+          echo "::set-output name=branch_base_ref::${GITHUB_BASE_REF}"
+          echo "::set-output name=branch_head_ref::${GITHUB_HEAD_REF}"
 
   echo-branch:
     name: echo-branch
@@ -25,9 +29,14 @@ jobs:
     needs: [ set-parameters ]
     env:
       BRANCH: "${{ needs.set-parameters.outputs.branch }}"
+      BRANCH_BASE_REF: "${{ needs.set-parameters.outputs.branch_base_ref }}"
+      BRANCH_HEAD_REF: "${{ needs.set-parameters.outputs.branch_head_ref }}"
     steps:
       - name: ECHO
         run: |
           echo "Staging APP3 Deploy"
-          echo "Branch name is $BRANCH"
+          echo "Branch_ref name is $BRANCH"
+          echo "Branch_base_ref name is $BRANCH_BASE_REF"
+          echo "Branch_head_ref name is $BRANCH_HEAD_REF"
+          env | grep -i github | grep -iv token
 
