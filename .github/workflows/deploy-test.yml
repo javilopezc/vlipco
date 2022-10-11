@@ -21,10 +21,10 @@ jobs:
     needs: [ set-parameters ]
     env:
       BRANCH: "${{ needs.set-parameters.outputs.branch }}"
-      steps:
-        - name: ECHO
-          run: |
-            echo "$BRANCH"
+    steps:
+      - name: ECHO
+        run: |
+          echo "$BRANCH"
 
 
 
