@@ -19,7 +19,7 @@ jobs:
       - name: Set App Parameters
         id: app_params
         run: |
-          echo "::set-output name=branch::${GITHUB_REF}"
+          echo "::set-output name=branch::${GITHUB_REF#refs/heads/}"
           echo "::set-output name=branch_base_ref::${GITHUB_BASE_REF}"
           echo "::set-output name=branch_head_ref::${GITHUB_HEAD_REF}"
 
@@ -39,4 +39,8 @@ jobs:
           echo "Branch_base_ref name is $BRANCH_BASE_REF"
           echo "Branch_head_ref name is $BRANCH_HEAD_REF"
           env | grep -i github | grep -iv token
+      - name: Dump GitHub Context
+        id: github_context_step
+        run: echo '${{ toJSON(github) }}'
+
 
