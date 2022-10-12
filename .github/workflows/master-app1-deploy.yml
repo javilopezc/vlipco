@@ -1,5 +1,5 @@
 
-name: Staging APP1 Deploy
+name: Master APP1 Deploy
 on:
   pull_request:
     branches:
@@ -8,7 +8,7 @@ on:
     
 jobs:
   set-parameters:
-    if: github.event.review.state == 'approved' && contains(github.head_ref, 'app1')
+    if: contains(github.head_ref, 'app1')
     name: set-parameters
     runs-on: ubuntu-latest
     outputs: 
